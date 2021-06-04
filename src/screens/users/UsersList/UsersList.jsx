@@ -11,7 +11,9 @@ const UsersList = () => {
         <div style={{padding: '1rem'}}>
           <Grid container direction={"column"} spacing={2}>
             {users.map(user => (
-                <SingleUser user={user}/>
+                <Grid item>
+                    <SingleUser user={user}/>
+                </Grid>
             ))}
           </Grid>
         </div>
