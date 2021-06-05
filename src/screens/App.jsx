@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 import Users from './users';
 import TopBar from './_shared/TopBar';
+import UserPage from "./users/UserPage";
 
 const useStyles = makeStyles(() => ({
   container: {
@@ -21,6 +22,7 @@ const App = () => {
       <TopBar />
       <Switch>
         <Route path={'/'} exact component={Users}/>
+        <Route path={'/new-user'} exact component={UserPage}/>
       </Switch>
     </div>
   </Router>
