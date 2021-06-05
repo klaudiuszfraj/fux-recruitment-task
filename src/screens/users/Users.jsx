@@ -22,7 +22,7 @@ const Users = () => {
     <Container maxWidth="md">
       <Box mt={4} clone>
         <Paper >
-          <div style={{ padding: 20 }}>
+          <Box>
             <Grid container justify={'space-between'} alignItems={'center'}>
               <Box clone>
                 <Typography variant='h3' style={{fontSize: 24}}>Users</Typography>
@@ -31,7 +31,7 @@ const Users = () => {
                 ADD USER
               </Button>
             </Grid>
-          </div>
+          </Box>
 
           <UsersList />
         </Paper>
