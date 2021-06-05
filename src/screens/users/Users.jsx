@@ -10,9 +10,12 @@ import AddIcon from '@material-ui/icons/Add';
 import UsersList from './UsersList'
 import { loadUsers } from '../../redux/actions/usersActions';
 import {Grid} from "@material-ui/core";
+import { useHistory } from 'react-router-dom';
 
 const Users = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
+
 
   useEffect(() => {
     dispatch(loadUsers());
@@ -27,7 +30,12 @@ const Users = () => {
               <Box clone>
                 <Typography variant='h3' style={{fontSize: 24}}>Users</Typography>
               </Box>
-              <Button variant="contained" style={{backgroundColor: '#43565f', color: '#fff'}} startIcon={<AddIcon/>}>
+              <Button
+                  variant="contained"
+                  style={{backgroundColor: '#43565f', color: '#fff'}}
+                  startIcon={<AddIcon/>}
+                  onClick={() => history.push(`new-user`)}
+              >
                 ADD USER
               </Button>
             </Grid>
