@@ -13,7 +13,7 @@ export default function TopBar() {
         <Toolbar style={{padding: 0}}>
             <div style={{width: 47, height: 45, backgroundColor: '#43565f', display: 'inline-block', marginRight: '1rem'}}/>
             <Typography variant="h6" >
-            App name
+                Users app
           </Typography>
         </Toolbar>
       </Container>
