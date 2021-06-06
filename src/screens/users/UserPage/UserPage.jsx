@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import {TextField, Button, Grid} from "@material-ui/core";
+import { useHistory, useLocation } from 'react-router-dom';
 
 
 const UserPage = () => {
@@ -13,6 +14,18 @@ const UserPage = () => {
     const [nameError, setNameError] = useState(false);
     const [surnameError, setSurnameError] = useState(false);
     const [emailError, setEmailError] = useState(false);
+    const history = useHistory();
+    const location = useLocation();
+
+    useEffect(() => {
+        if (location.state) {
+            const { state: { user } } = location;
+            setName(user.first_name);
+            setSurname(user.last_name);
+            setEmail(user.email);
+        }
+    },[location])
+
 
     const handleErrors = () => {
         if (!name || !surname || !email) {
@@ -34,8 +47,12 @@ const UserPage = () => {
                 <Paper >
                     <Box style={{ padding: 20 }}>
                         <Box mb={2}>
-                            <Typography variant='h3' style={{fontSize: 24}} mt={4}>New user details</Typography>
+                            <Typography variant='h3' style={{fontSize: 24}}>New user details</Typography>
                         </Box>
+                        {location.state &&
+                        <Box mb={2}>
+                            <Typography variant='body2'>ID: {location.state.user.id}</Typography>
+                        </Box>}
                         <form noValidate autoComplete="off" onSubmit={handleSubmit}>
                             <Grid container direction={'column'} spacing={2}>
                                 <Grid item>
@@ -45,17 +62,18 @@ const UserPage = () => {
                                         variant="outlined"
                                         fullWidth
                                         error={nameError}
+                                        value={name}
                                         onChange={(e) => setName(e.target.value)}
                                     />
                                 </Grid>
                                 <Grid item>
                                     <TextField
-                                        item
                                         id="surname"
                                         label="Surname"
                                         variant="outlined"
                                         fullWidth
                                         error={surnameError}
+                                        value={surname}
                                         onChange={(e) => setSurname(e.target.value)}
                                     />
                                 </Grid>
@@ -66,12 +84,15 @@ const UserPage = () => {
                                         variant="outlined"
                                         fullWidth
                                         error={emailError}
+                                        value={email}
                                         onChange={(e) => setEmail(e.target.value)}
                                     />
                                 </Grid>
                                 <Grid item>
                                     <Grid container justify={'flex-end'}>
-                                        <Button>CANCEL</Button>
+                                        <Button
+                                            onClick={() => history.push(`/`)}
+                                        >CANCEL</Button>
                                         <Box ml={2}>
                                             <Button variant="contained" type={'submit'}>SUBMIT TO REVIEW</Button>
                                         </Box>
