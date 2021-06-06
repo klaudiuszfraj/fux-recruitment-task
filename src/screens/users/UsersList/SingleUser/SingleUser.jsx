@@ -3,13 +3,20 @@ import {ListItemAvatar, Paper, Avatar} from "@material-ui/core";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Typography from "@material-ui/core/Typography";
+import { useHistory } from 'react-router-dom';
+
 
 const SingleUser = ({ user }) => {
-    console.log(user)
+    const history = useHistory();
     return (
             <Paper key={`user-${user.id}`} >
-                <ListItem>
-
+                <ListItem
+                    button
+                    onClick={() => history.push({
+                        pathname: `user/${user.id}`,
+                        state: {user}
+                    })}
+                >
                     <ListItemText
                         primary={
                             <>
