@@ -5,11 +5,14 @@ import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Users from './users';
 import TopBar from './_shared/TopBar';
 import UserPage from "./users/UserPage";
+import Footer from "./_shared/Footer";
 
 const useStyles = makeStyles(() => ({
   container: {
     display: 'flex',
     flexDirection: 'column',
+    justifyContent: "space-between",
+    minHeight: '100vh'
   },
 }));
 
@@ -25,6 +28,7 @@ const App = () => {
         <Route path={'/new-user'} exact component={UserPage}/>
         <Route path={'/user/:id'} exact component={UserPage}/>
       </Switch>
+      <Footer/>
     </div>
   </Router>
   )
