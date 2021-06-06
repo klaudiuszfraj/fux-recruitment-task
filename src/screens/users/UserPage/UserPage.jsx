@@ -33,6 +33,11 @@ const UserPage = () => {
             if (!name) {setNameError(true)}else {setNameError(false)}
             if (!surname) {setSurnameError(true)}else {setSurnameError(false)}
             if (!email) {setEmailError(true)}else {setEmailError(false)}
+        } else {
+            history.push({
+                pathname: '/',
+                state: {message: 'Thank you, your submission is pending and will appear after validation.'}
+            });
         }
     }
 
