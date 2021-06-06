@@ -23,6 +23,7 @@ const App = () => {
       <Switch>
         <Route path={'/'} exact component={Users}/>
         <Route path={'/new-user'} exact component={UserPage}/>
+        <Route path={'/user/:id'} exact component={UserPage}/>
       </Switch>
     </div>
   </Router>
