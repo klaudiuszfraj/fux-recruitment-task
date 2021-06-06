@@ -24,8 +24,8 @@ const Users = () => {
   return (
     <Container maxWidth="md">
       <Box mt={4} clone>
-        <Paper >
-          <Box>
+        <Paper>
+          <Box px={2} py={1}>
             <Grid container justify={'space-between'} alignItems={'center'}>
               <Box clone>
                 <Typography variant='h3' style={{fontSize: 24}}>Users</Typography>
